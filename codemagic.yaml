@@ -1,0 +1,41 @@
+version: 1.0
+
+workflows:
+  ios:
+    name: Build iOS
+    description: Build the iOS app
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      node: "14.16.0"
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Run tests
+        script: |
+          npm test
+      - name: Build iOS app
+        script: |
+          npx react-native run-ios --configuration Release
+    artifacts:
+      - build/ios/iphoneos/*.ipa
+  android:
+    name: Build Android
+    description: Build the Android app
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      node: "14.16.0"
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Run tests
+        script: |
+          npm test
+      - name: Build Android app
+        script: |
+          npx react-native run-android --variant release
+    artifacts:
+      - build/android/app/build/outputs/apk/release/*.apk
