@@ -3,7 +3,6 @@ version: 1.0
 workflows:
   ios:
     name: Build iOS
-    description: Build the iOS app
     max_build_duration: 60
     environment:
       flutter: stable
@@ -22,7 +21,6 @@ workflows:
       - build/ios/iphoneos/*.ipa
   android:
     name: Build Android
-    description: Build the Android app
     max_build_duration: 60
     environment:
       flutter: stable
